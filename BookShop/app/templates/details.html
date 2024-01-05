@@ -24,7 +24,7 @@
                     <p class="card-text">Mô tả: {{ p.sach_info }}</p>
                     <h4 class="card-text">Giá: {{ p.price }} VNĐ</h4>
                     <div class="d-flex justify-content-center">
-                    <a href="#" class="btn btn-danger">Đặt hàng</a>
+                    <a href="javascript:;" class="btn btn-danger" onclick="addToCart({{p.id}}, '{{p.name}}', {{p.price}})">Đặt hàng</a>
                 </div>
                 </div>
             </div>
