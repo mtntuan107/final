@@ -93,6 +93,7 @@ class KhachHang(db.Model):
     name = Column(String(50), nullable=False, unique=True)
     email = Column(String(50))
     diachi = Column(String(50), nullable=False)
+    sdt = Column(String(50), nullable=False)
     tk_id = Column(Integer, ForeignKey(TaiKhoan.id), nullable=False)
     def __str__(self):
         return self.name
