@@ -120,6 +120,7 @@ def register():
         email = request.form.get('email')
         password = request.form.get('password')
         confirm = request.form.get('confirm')
+        location = request.form.get('location')
         avatar_path = None
         try:
             if password.strip().__eq__(confirm.strip()):
@@ -129,9 +130,8 @@ def register():
                     avatar_path = res['secure_url']
 
                 utils.add_tk(username=username, password=password, avatar=avatar_path)
-                tk = utils.get_id_from_name(name=username)
-                tk_id = tk.id
-                utils.tk_link_kh(tk_id=tk_id, name=name, email=email)
+                tk_id = utils.get_id_from_username(username)
+                utils.tk_link_kh(tk_id=tk_id, name=name, location=location, email=email)
                 return redirect(url_for('index'))
             else:
                 err_msg = "Password not valid"

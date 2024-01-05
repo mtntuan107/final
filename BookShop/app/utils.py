@@ -24,10 +24,15 @@ def add_tk(username, password, **kwargs):
     db.session.commit()
 
 
-def get_id_from_name(name):
-    return TaiKhoan.query.filter(TaiKhoan.username.__eq__(name))
-def tk_link_kh(tk_id, name, **kwargs):
-    kh = KhachHang(tk_id=tk_id, name=name, email=kwargs.get('email'))
+def get_id_from_username(username):
+    username = username.strip()
+    tk = TaiKhoan.query.filter_by(username=username).first()
+    if tk:
+        return tk.id
+    else:
+        return None
+def tk_link_kh(tk_id, name, location, **kwargs):
+    kh = KhachHang(tk_id=tk_id, name=name, diachi=location, email=kwargs.get('email'))
     db.session.add(kh)
     db.session.commit()
 

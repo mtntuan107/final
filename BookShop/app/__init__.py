@@ -20,4 +20,4 @@ cloudinary.config(
     api_secret='A_7IwCcd0EOiMXkFjn33MlF39rU'
 )
 
-login = LoginManager(app = app)
+login = LoginManager(app=app)
